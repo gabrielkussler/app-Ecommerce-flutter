@@ -40,6 +40,7 @@ class _BodyState extends State<Body> {
           children: [
             Expanded(
               flex: 3,
+
               child: PageView.builder(
                 onPageChanged: (value) {
                   setState(() {
