@@ -5,6 +5,7 @@ import 'package:ecommerceapp/screens/sign_in/sign_in_screen.dart';
 import 'package:ecommerceapp/screens/sign_up/sign_up_screen.dart';
 import 'package:ecommerceapp/screens/splash/splash_screen.dart';
 import 'package:ecommerceapp/screens/otp/otp_screen.dart';
+import 'package:ecommerceapp/screens/home/home_screen.dart';
 import 'package:flutter/widgets.dart';
 
 // We use name route
@@ -17,4 +18,5 @@ final Map<String, WidgetBuilder> routes = {
   SignUpScreen.routeName: (context) => SignUpScreen(),
   CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OtpScreen.routeName: (context) => OtpScreen(),
+  HomeScreen.routeName: (context) => HomeScreen(),
 };
