@@ -1,17 +1,10 @@
-import 'dart:html';
-
-import 'package:ecommerceapp/components/product_card.dart';
-import 'package:ecommerceapp/constants.dart';
-import 'package:ecommerceapp/models/Product.dart';
 import 'package:ecommerceapp/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'categories.dart';
 import 'discount_banner.dart';
 import 'home_header.dart';
-import 'popular_products.dart';
-import 'section_title.dart';
+import 'popular_product.dart';
 import 'special_offers.dart';
 
 class Body extends StatelessWidget {
