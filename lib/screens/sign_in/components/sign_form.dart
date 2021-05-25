@@ -1,10 +1,11 @@
-import 'package:ecommerceapp/components/custom_surfix_icon.dart';
-import 'package:ecommerceapp/components/default_button.dart';
-import 'package:ecommerceapp/components/form_error.dart';
-import 'package:ecommerceapp/screens/forget_password/forget_password_screen.dart';
-import 'package:ecommerceapp/screens/login_success/login_succsess_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/custom_surfix_icon.dart';
+import 'package:shop_app/components/form_error.dart';
+import 'package:shop_app/helper/keyboard.dart';
+import 'package:shop_app/screens/forgot_password/forgot_password_screen.dart';
+import 'package:shop_app/screens/login_success/login_success_screen.dart';
 
+import '../../../components/default_button.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
@@ -58,7 +59,8 @@ class _SignFormState extends State<SignForm> {
               Text("Remember me"),
               Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushNamed(context, ForgetPasswordScreen.routeName),
+                onTap: () => Navigator.pushNamed(
+                    context, ForgotPasswordScreen.routeName),
                 child: Text(
                   "Forgot Password",
                   style: TextStyle(decoration: TextDecoration.underline),
@@ -74,6 +76,7 @@ class _SignFormState extends State<SignForm> {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 // if all are valid then go to success screen
+                KeyboardUtil.hideKeyboard(context);
                 Navigator.pushNamed(context, LoginSuccessScreen.routeName);
               }
             },

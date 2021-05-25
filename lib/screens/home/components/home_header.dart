@@ -1,8 +1,9 @@
-import 'package:ecommerceapp/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
-import 'search_field.dart';
+import 'package:shop_app/screens/cart/cart_screen.dart';
+
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
+import 'search_field.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
@@ -12,8 +13,8 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(20)),
+      padding:
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -24,7 +25,7 @@ class HomeHeader extends StatelessWidget {
           ),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
-            numOfItems: 3,
+            numOfitem: 3,
             press: () {},
           ),
         ],

@@ -1,9 +1,9 @@
-import 'package:ecommerceapp/models/Cart.dart';
-import 'package:ecommerceapp/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/models/Cart.dart';
 
-import 'cart_item_card.dart';
+import '../../../size_config.dart';
+import 'cart_card.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: ListView.builder(
         itemCount: demoCarts.length,
         itemBuilder: (context, index) => Padding(
@@ -23,11 +23,17 @@ class _BodyState extends State<Body> {
           child: Dismissible(
             key: Key(demoCarts[index].product.id.toString()),
             direction: DismissDirection.endToStart,
+            onDismissed: (direction) {
+              setState(() {
+                demoCarts.removeAt(index);
+              });
+            },
             background: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                  color: Color(0xffffe6e6),
-                  borderRadius: BorderRadius.circular(15)),
+                color: Color(0xFFFFE6E6),
+                borderRadius: BorderRadius.circular(15),
+              ),
               child: Row(
                 children: [
                   Spacer(),
@@ -35,12 +41,7 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            onDismissed: (direction) {
-              setState(() {
-                demoCarts.removeAt(index);
-              });
-            },
-            child: CartItemCard(cart: demoCarts[index]),
+            child: CartCard(cart: demoCarts[index]),
           ),
         ),
       ),

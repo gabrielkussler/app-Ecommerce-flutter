@@ -1,6 +1,6 @@
-import 'package:ecommerceapp/components/rounded_icon_btn.dart';
-import 'package:ecommerceapp/models/Product.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/rounded_icon_btn.dart';
+import 'package:shop_app/models/Product.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -15,27 +15,29 @@ class ColorDots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Now this is fixed and only for demo
     int selectedColor = 3;
     return Padding(
       padding:
-      EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         children: [
           ...List.generate(
             product.colors.length,
-                (index) => ColorDot(
+            (index) => ColorDot(
               color: product.colors[index],
-              isSelected: selectedColor == index,
+              isSelected: index == selectedColor,
             ),
           ),
           Spacer(),
           RoundedIconBtn(
-            iconData: Icons.remove,
+            icon: Icons.remove,
             press: () {},
           ),
-          SizedBox(width: getProportionateScreenWidth(15)),
+          SizedBox(width: getProportionateScreenWidth(20)),
           RoundedIconBtn(
-            iconData: Icons.add,
+            icon: Icons.add,
+            showShadow: true,
             press: () {},
           ),
         ],
@@ -58,14 +60,14 @@ class ColorDot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 2),
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
       height: getProportionateScreenWidth(40),
       width: getProportionateScreenWidth(40),
       decoration: BoxDecoration(
-        //  color: product.colors[0],
-        shape: BoxShape.circle,
+        color: Colors.transparent,
         border:
-        Border.all(color: isSelected ? kPrimaryColor : Colors.transparent),
+            Border.all(color: isSelected ? kPrimaryColor : Colors.transparent),
+        shape: BoxShape.circle,
       ),
       child: DecoratedBox(
         decoration: BoxDecoration(

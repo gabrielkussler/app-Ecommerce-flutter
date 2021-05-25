@@ -1,9 +1,8 @@
-import 'package:ecommerceapp/components/custom_surfix_icon.dart';
-import 'package:ecommerceapp/components/default_button.dart';
-import 'package:ecommerceapp/components/form_error.dart';
-import 'package:ecommerceapp/screens/otp/otp_screen.dart';
-
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/custom_surfix_icon.dart';
+import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/components/form_error.dart';
+import 'package:shop_app/screens/otp/otp_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -39,33 +38,26 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Padding(
-        padding:
-        EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              buildFirstNameFormField(),
-              SizedBox(height: getProportionateScreenWidth(25)),
-              buildLastNameFormField(),
-              SizedBox(height: getProportionateScreenWidth(25)),
-              buildPhoneNumberFormField(),
-              SizedBox(height: getProportionateScreenWidth(25)),
-              buildAddressFormField(),
-              FormError(errors: errors),
-              SizedBox(height: getProportionateScreenWidth(25)),
-              DefaultButton(
-                text: "Continue",
-                press: () {
-                  if(_formKey.currentState.validate()){
-                    // Go to OTP screen
-                    Navigator.pushNamed(context, OtpScreen.routeName);
-                  }
-                },
-              ),
-            ],
+      child: Column(
+        children: [
+          buildFirstNameFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildLastNameFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildPhoneNumberFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          buildAddressFormField(),
+          FormError(errors: errors),
+          SizedBox(height: getProportionateScreenHeight(40)),
+          DefaultButton(
+            text: "continue",
+            press: () {
+              if (_formKey.currentState.validate()) {
+                Navigator.pushNamed(context, OtpScreen.routeName);
+              }
+            },
           ),
-        ),
+        ],
       ),
     );
   }
@@ -88,19 +80,19 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       },
       decoration: InputDecoration(
         labelText: "Address",
-        hintText: "Enter your address",
+        hintText: "Enter your phone address",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon:
-        CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+            CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
       ),
     );
   }
 
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.phone,
       onSaved: (newValue) => phoneNumber = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -121,15 +113,14 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon:
-        CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
       ),
     );
   }
 
   TextFormField buildLastNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => firstName = newValue,
+      onSaved: (newValue) => lastName = newValue,
       decoration: InputDecoration(
         labelText: "Last Name",
         hintText: "Enter your last name",

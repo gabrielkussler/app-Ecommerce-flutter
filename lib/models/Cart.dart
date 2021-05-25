@@ -1,15 +1,19 @@
-import 'package:ecommerceapp/models/Product.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'Product.dart';
+import 'Product.dart';
 
 class Cart {
   final Product product;
-  final int numOfItems;
+  final int numOfItem;
 
-  Cart({@required this.product, @required this.numOfItems});
+  Cart({@required this.product, @required this.numOfItem});
 }
 
+// Demo data for our cart
+
 List<Cart> demoCarts = [
-  Cart(product: demoProducts[0], numOfItems: 2),
-  Cart(product: demoProducts[1], numOfItems: 1),
-  Cart(product: demoProducts[3], numOfItems: 1),
+  Cart(product: demoProducts[0], numOfItem: 2),
+  Cart(product: demoProducts[1], numOfItem: 1),
+  Cart(product: demoProducts[3], numOfItem: 1),
 ];

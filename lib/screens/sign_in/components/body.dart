@@ -1,8 +1,8 @@
-import 'package:ecommerceapp/components/no_account_text.dart';
-import 'package:ecommerceapp/components/socal_card.dart';
-import 'package:ecommerceapp/screens/sign_in/components/sign_form.dart';
-import 'package:ecommerceapp/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/no_account_text.dart';
+import 'package:shop_app/components/socal_card.dart';
+import '../../../size_config.dart';
+import 'sign_form.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -16,9 +16,7 @@ class Body extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
-                  height: SizeConfig.screenWidth * 0.02,
-                ),
+                SizedBox(height: SizeConfig.screenHeight * 0.04),
                 Text(
                   "Welcome Back",
                   style: TextStyle(
@@ -28,16 +26,12 @@ class Body extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Sign with your email and password \nor continue with social media",
+                  "Sign in with your email and password  \nor continue with social media",
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: SizeConfig.screenWidth * 0.08,
-                ),
+                SizedBox(height: SizeConfig.screenHeight * 0.08),
                 SignForm(),
-                SizedBox(
-                  height: SizeConfig.screenWidth * 0.08,
-                ),
+                SizedBox(height: SizeConfig.screenHeight * 0.08),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -55,9 +49,7 @@ class Body extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: getProportionateScreenWidth(20),
-                ),
+                SizedBox(height: getProportionateScreenHeight(20)),
                 NoAccountText(),
               ],
             ),

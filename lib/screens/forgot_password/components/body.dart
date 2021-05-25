@@ -1,15 +1,13 @@
-import 'package:ecommerceapp/components/custom_surfix_icon.dart';
-import 'package:ecommerceapp/components/default_button.dart';
-import 'package:ecommerceapp/components/form_error.dart';
-import 'package:ecommerceapp/components/no_account_text.dart';
-import 'package:ecommerceapp/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/custom_surfix_icon.dart';
+import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/components/form_error.dart';
+import 'package:shop_app/components/no_account_text.dart';
+import 'package:shop_app/size_config.dart';
 
 import '../../../constants.dart';
 
 class Body extends StatelessWidget {
-  const Body({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,7 +20,7 @@ class Body extends StatelessWidget {
             children: [
               SizedBox(height: SizeConfig.screenHeight * 0.04),
               Text(
-                "Forget Password",
+                "Forgot Password",
                 style: TextStyle(
                   fontSize: getProportionateScreenWidth(28),
                   color: Colors.black,
@@ -34,7 +32,7 @@ class Body extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.1),
-              ForgetPasswordForm(),
+              ForgotPassForm(),
             ],
           ),
         ),
@@ -43,18 +41,15 @@ class Body extends StatelessWidget {
   }
 }
 
-class ForgetPasswordForm extends StatefulWidget {
-  const ForgetPasswordForm({Key key}) : super(key: key);
-
+class ForgotPassForm extends StatefulWidget {
   @override
-  _ForgetPasswordFormState createState() => _ForgetPasswordFormState();
+  _ForgotPassFormState createState() => _ForgotPassFormState();
 }
 
-class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
+class _ForgotPassFormState extends State<ForgotPassForm> {
   final _formKey = GlobalKey<FormState>();
   List<String> errors = [];
   String email;
-
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -90,13 +85,13 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
               }
               return null;
             },
-            decoration: InputDecoration (
+            decoration: InputDecoration(
               labelText: "Email",
               hintText: "Enter your email",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: CustomSurffixIcon(
-                svgIcon: "assets/icons/Mail.svg",
-              ),
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
             ),
           ),
           SizedBox(height: getProportionateScreenHeight(30)),
@@ -105,8 +100,8 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              if(_formKey.currentState.validate()){
-                //Do what you want to do
+              if (_formKey.currentState.validate()) {
+                // Do what you want to do
               }
             },
           ),

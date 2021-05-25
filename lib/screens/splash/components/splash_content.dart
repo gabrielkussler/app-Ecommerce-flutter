@@ -1,6 +1,7 @@
-import 'package:ecommerceapp/constants.dart';
-import 'package:ecommerceapp/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+import '../../../size_config.dart';
 
 class SplashContent extends StatelessWidget {
   const SplashContent({
@@ -13,7 +14,7 @@ class SplashContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: <Widget>[
         Spacer(),
         Text(
           "TOKOTO",
@@ -27,9 +28,7 @@ class SplashContent extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
         ),
-        Spacer(
-          flex: 2,
-        ),
+        Spacer(flex: 2),
         Image.asset(
           image,
           height: getProportionateScreenHeight(265),

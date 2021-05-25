@@ -1,11 +1,13 @@
-import 'package:ecommerceapp/components/default_button.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/size_config.dart';
 
 import '../../../constants.dart';
-import '../../../size_config.dart';
 
 class OtpForm extends StatefulWidget {
-  const OtpForm({Key key}) : super(key: key);
+  const OtpForm({
+    Key key,
+  }) : super(key: key);
 
   @override
   _OtpFormState createState() => _OtpFormState();
@@ -26,13 +28,13 @@ class _OtpFormState extends State<OtpForm> {
 
   @override
   void dispose() {
+    super.dispose();
     pin2FocusNode.dispose();
     pin3FocusNode.dispose();
     pin4FocusNode.dispose();
-    super.dispose();
   }
 
-  void nextField({String value, FocusNode focusNode}) {
+  void nextField(String value, FocusNode focusNode) {
     if (value.length == 1) {
       focusNode.requestFocus();
     }
@@ -43,6 +45,7 @@ class _OtpFormState extends State<OtpForm> {
     return Form(
       child: Column(
         children: [
+          SizedBox(height: SizeConfig.screenHeight * 0.15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -51,13 +54,12 @@ class _OtpFormState extends State<OtpForm> {
                 child: TextFormField(
                   autofocus: true,
                   obscureText: true,
-                  keyboardType: TextInputType.number,
                   style: TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
                   onChanged: (value) {
-                    // also you need to store your value
-                    nextField(value: value, focusNode: pin2FocusNode);
+                    nextField(value, pin2FocusNode);
                   },
                 ),
               ),
@@ -66,13 +68,11 @@ class _OtpFormState extends State<OtpForm> {
                 child: TextFormField(
                   focusNode: pin2FocusNode,
                   obscureText: true,
-                  keyboardType: TextInputType.number,
                   style: TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    nextField(value: value, focusNode: pin3FocusNode);
-                  },
+                  onChanged: (value) => nextField(value, pin3FocusNode),
                 ),
               ),
               SizedBox(
@@ -80,13 +80,11 @@ class _OtpFormState extends State<OtpForm> {
                 child: TextFormField(
                   focusNode: pin3FocusNode,
                   obscureText: true,
-                  keyboardType: TextInputType.number,
                   style: TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    nextField(value: value, focusNode: pin4FocusNode);
-                  },
+                  onChanged: (value) => nextField(value, pin4FocusNode),
                 ),
               ),
               SizedBox(
@@ -94,24 +92,25 @@ class _OtpFormState extends State<OtpForm> {
                 child: TextFormField(
                   focusNode: pin4FocusNode,
                   obscureText: true,
-                  keyboardType: TextInputType.number,
                   style: TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
                   onChanged: (value) {
-                    pin4FocusNode.unfocus();
+                    if (value.length == 1) {
+                      pin4FocusNode.unfocus();
+                      // Then you need to check is the code is correct or not
+                    }
                   },
                 ),
               ),
             ],
           ),
-          SizedBox(
-            height: SizeConfig.screenHeight * 0.15,
-          ),
+          SizedBox(height: SizeConfig.screenHeight * 0.15),
           DefaultButton(
             text: "Continue",
             press: () {},
-          ),
+          )
         ],
       ),
     );

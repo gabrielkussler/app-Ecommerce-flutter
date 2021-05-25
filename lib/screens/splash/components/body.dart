@@ -1,11 +1,10 @@
-import 'package:ecommerceapp/screens/sign_in/sign_in_screen.dart';
-import 'package:ecommerceapp/screens/splash/components/splash_content.dart';
-import 'package:ecommerceapp/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_app/constants.dart';
+import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
+import 'package:shop_app/size_config.dart';
 
-/*this the better pratices*/
+// This is the best practice
 import '../components/splash_content.dart';
-import '../../../constants.dart';
 import '../../../components/default_button.dart';
 
 class Body extends StatefulWidget {
@@ -30,17 +29,15 @@ class _BodyState extends State<Body> {
       "image": "assets/images/splash_3.png"
     },
   ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
         width: double.infinity,
         child: Column(
-          children: [
+          children: <Widget>[
             Expanded(
               flex: 3,
-
               child: PageView.builder(
                 onPageChanged: (value) {
                   setState(() {
@@ -50,7 +47,7 @@ class _BodyState extends State<Body> {
                 itemCount: splashData.length,
                 itemBuilder: (context, index) => SplashContent(
                   image: splashData[index]["image"],
-                  text: splashData[index]["text"],
+                  text: splashData[index]['text'],
                 ),
               ),
             ),
@@ -58,10 +55,9 @@ class _BodyState extends State<Body> {
               flex: 2,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(20),
-                ),
+                    horizontal: getProportionateScreenWidth(20)),
                 child: Column(
-                  children: [
+                  children: <Widget>[
                     Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
